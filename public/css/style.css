@@ -1,0 +1,41 @@
+@media (min-width: 1561px) {
+	.container, .container-sm, .container-md, .container-lg, .container-xl {
+	    max-width: 1560px;
+	}
+}
+
+.carousel-indicators li{
+	background-color: #4CAF50;
+}
+
+.wrap-container {
+	margin-top: 56px;
+}
+
+.carousel-item {
+	max-height: 700px;
+	background: no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.slide-show {
+	margin-top: 56px;
+}
+
+.carousel-item img {
+	width: 100%;
+	height: auto;
+}
+
+.custom-link {
+	position: absolute;
+	z-index: 20;
+	display: block;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}

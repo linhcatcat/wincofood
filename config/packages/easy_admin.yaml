@@ -1,0 +1,79 @@
+easy_admin:
+  site_name: 'Good M'
+  design:
+    #rtl: false
+    assets:
+      css:
+        - 'css/admin.css'
+    form_theme:
+      - '@EasyAdmin/form/bootstrap_4.html.twig'
+      - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+      - '@VichUploader/Form/fields.html.twig'
+  list:
+    max_results: 20
+  entities:
+    # Article:
+    #   class: App\Entity\Article
+    #   form:
+    #     fields:
+    #       - { property: 'title', type: 'text'}
+    #       - { 
+    #           property: 'body', 
+    #           type: 'fos_ckeditor', 
+    #           type_options: { 'config': { 'toolbar': 'full', 'uiColor': '#e2e2e2' } }
+    #         }
+    Product:
+      class: App\Entity\Product
+      form:
+        fields:
+          - { property: 'title', type: 'text'}
+          - { property: 'category', type_options: { 'by_reference': true } }
+          - { property: 'imageFile', type: 'vich_image' }
+          - { 
+              property: 'content', 
+              type: 'fos_ckeditor', 
+              type_options: { 'config': { 'toolbar': 'full', 'uiColor': '#e2e2e2' } }
+            }
+      list:
+        fields:
+          - { property: 'image', template: 'vich_uploader_image.html.twig' }
+          - { property: 'title', type: 'text'}
+          - { property: 'category', type_options: { 'by_reference': false } }
+    Category:
+      class: App\Entity\Category
+      form:
+        fields:
+          - { property: 'name', type: 'text' }
+          - { property: 'description', type: 'text' }
+          - { property: 'products', type_options: { multiple: true, by_reference: false } }
+      list:
+        fields:
+          - { property: 'id', type: 'text'}
+          - { property: 'name', type: 'text'}
+          - { property: 'description', type: 'text' }
+          - { property: 'products', type_options: { multiple: true, by_reference: false } }
+    Menu:
+      class: App\Entity\Menu
+      form:
+        fields:
+          - { property: 'name', type: 'text' }
+          - { property: 'link', type: 'text' }
+          - { property: 'parent', type_options: { 'by_reference': true } }
+      list:
+        fields:
+          - { property: 'name', type: 'text' }
+          - { property: 'link', type: 'text' }
+          - { property: 'parent', type_options: { 'by_reference': false } }
+    Slide:
+      class: App\Entity\Slide
+      form:
+        fields:
+          - { property: 'title', type: 'text'}
+          - { property: 'link', type: 'text'}
+          - { property: 'description', type: 'textarea' }
+          - { property: 'imageFile', type: 'vich_image' }
+      list:
+        fields:
+          - { property: 'image', template: 'vich_uploader_image.html.twig' }
+          - { property: 'title', type: 'text'}
+          - { property: 'link', type: 'text'}
