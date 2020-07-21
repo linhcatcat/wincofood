@@ -85,4 +85,8 @@
 			$resp->setContent(json_encode(array('content' => $reqJson, 'message' => 'Update menu successfully!')));
 			return $resp;
 		}
+
+		public function menuFooter(Request $req) {
+			return $this->render('inc/menu_footer.html.twig');
+		}
 	}
