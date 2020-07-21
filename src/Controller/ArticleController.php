@@ -35,6 +35,24 @@
 	        ]);
 	    }
 
+	    /**
+		* @Route("/send-mail", name="send_mail")
+		* @Method({"GET"})
+		*/
+	    public function sendEmail(\Swift_Mailer $mailer)
+		{
+		    $message = (new \Swift_Message('Hello Email'))
+		        ->setFrom('trancatlinh@gmail.com')
+		        ->setTo('trancatlinh@gmail.com')
+		        ->setBody('You should see me from the profiler!');
+		    $mailer->send($message);
+
+		    $resp = new Response();
+			$resp->setStatusCode(200);
+			$resp->setContent(json_encode(array('content' => ['hee' => 123], 'message' => 'Update menu successfully!')));
+			return $resp;
+		}
+
 		/**
 		* @Route("/", name="article_list")
 		* @Method({"GET"})
