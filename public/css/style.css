@@ -12,6 +12,10 @@
 	margin-top: 56px;
 }
 
+footer.wrap-container {
+	margin-top: 0;
+}
+
 .carousel-item {
 	max-height: 700px;
 	background: no-repeat center center scroll;
@@ -38,6 +42,11 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
+}
+
+iframe.kenh-winco-food {
+	width: 350;
+	height: auto;
 }
 
 footer {

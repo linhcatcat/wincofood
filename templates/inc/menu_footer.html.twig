@@ -2,40 +2,21 @@
 	<div class="footer-top">
 		<div class="container">
 			<div class="row">
+				{% for m in menus %}
 				<div class="col-md-3">
 					<div class="winco-title">
-						<h4>Liên kết nhanh</h4>
+						<h4>{{m.name}}</h4>
 					</div>
-					<ul>
-						<li><a href="https://nutifood.com.vn/blog/tuyen-dung.html" class="hvr-underline-from-center">Tuyển Dụng</a></li>
-						<li><a href="https://www.nutifood.com.vn/blog/lien-he.html" class="hvr-underline-from-center">Liên hệ</a></li>
-						<li><a href="https://www.nutifood.com.vn/blog/trung-tam-phan-phoi.html" class="hvr-underline-from-center">Trung tâm phân phối</a></li>
-					</ul>
+					{{ render(controller('App\\Controller\\MenuFooterController::menuFooterSub', {parentId: m.id})) }}
 				</div>
-				<div class="col-md-3">
-					<div class="winco-title">
-						<h4>Liên kết nhanh</h4>
-					</div>
-					<ul>
-						<li><a href="https://nutifood.com.vn/blog/tuyen-dung.html" class="hvr-underline-from-center">Tuyển Dụng</a></li>
-						<li><a href="https://www.nutifood.com.vn/blog/lien-he.html" class="hvr-underline-from-center">Liên hệ</a></li>
-						<li><a href="https://www.nutifood.com.vn/blog/trung-tam-phan-phoi.html" class="hvr-underline-from-center">Trung tâm phân phối</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3">
-					<div class="winco-title">
-						<h4>Liên kết nhanh</h4>
-					</div>
-					<ul>
-						<li><a href="https://nutifood.com.vn/blog/tuyen-dung.html" class="hvr-underline-from-center">Tuyển Dụng</a></li>
-						<li><a href="https://www.nutifood.com.vn/blog/lien-he.html" class="hvr-underline-from-center">Liên hệ</a></li>
-						<li><a href="https://www.nutifood.com.vn/blog/trung-tam-phan-phoi.html" class="hvr-underline-from-center">Trung tâm phân phối</a></li>
-					</ul>
-				</div>
+				{% endfor %}
 				<div class="col-md-3">
 					<div class="winco-title">
 						<h4>Kênh WincoFood</h4>
 					</div>
+					<ul>
+						<iframe width="360" class="kenh-winco-food" src="https://www.youtube.com/embed/VHhqeDEUgFY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</ul>
 				</div>
 			</div>
 		</div>

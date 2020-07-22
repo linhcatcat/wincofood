@@ -64,6 +64,18 @@ easy_admin:
           - { property: 'name', type: 'text' }
           - { property: 'link', type: 'text' }
           - { property: 'parent', type_options: { 'by_reference': false } }
+    MenuFooter:
+      class: App\Entity\MenuFooter
+      form:
+        fields:
+          - { property: 'name', type: 'text' }
+          - { property: 'link', type: 'text' }
+          - { property: 'parent', type_options: { 'by_reference': true } }
+      list:
+        fields:
+          - { property: 'name', type: 'text' }
+          - { property: 'link', type: 'text' }
+          - { property: 'parent', type_options: { 'by_reference': false } }
     Slide:
       class: App\Entity\Slide
       form:
