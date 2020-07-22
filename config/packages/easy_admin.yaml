@@ -58,7 +58,7 @@ easy_admin:
         fields:
           - { property: 'name', type: 'text' }
           - { property: 'link', type: 'text' }
-          - { property: 'parent', type_options: { 'by_reference': true } }
+          #- { property: 'parent', type_options: { 'by_reference': true } }
       list:
         fields:
           - { property: 'name', type: 'text' }
@@ -70,7 +70,7 @@ easy_admin:
         fields:
           - { property: 'name', type: 'text' }
           - { property: 'link', type: 'text' }
-          - { property: 'parent', type_options: { 'by_reference': true } }
+          #- { property: 'parent', type_options: { 'by_reference': true } }
       list:
         fields:
           - { property: 'name', type: 'text' }

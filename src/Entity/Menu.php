@@ -31,7 +31,7 @@ class Menu
      * @ORM\ManyToOne(targetEntity="Menu", inversedBy="menus")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
-    private $parent;
+    private $parent=null;
 
     /**
      * @ORM\Column(type="integer", options={"default": 0})

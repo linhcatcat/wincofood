@@ -191,6 +191,12 @@
                                         {{ render(controller('App\\Controller\\MenuController::adminMenu')) }}
                                     {% endif %}
                                 {% endif %}
+
+                                {% if app.request.get('entity') == 'MenuFooter' %}
+                                    {% if app.request.get('action') == 'list' %}
+                                        {{ render(controller('App\\Controller\\MenuFooterController::adminMenuFooter')) }}
+                                    {% endif %}
+                                {% endif %}
                             </section>
                         {% endblock %}
 
@@ -214,6 +220,13 @@
                 {% if app.request.get('action') == 'list' %}
                 <script src="{{ asset('js/jquery.nestable.js') }}"></script>
                 <script src="{{ asset('js/admin.js') }}"></script>
+                {% endif %}
+            {% endif %}
+
+            {% if app.request.get('entity') == 'MenuFooter' %}
+                {% if app.request.get('action') == 'list' %}
+                <script src="{{ asset('js/jquery.nestable.js') }}"></script>
+                <script src="{{ asset('js/admin-footer.js') }}"></script>
                 {% endif %}
             {% endif %}
         {% endblock body_custom_javascript %}

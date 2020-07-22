@@ -33,7 +33,7 @@
             }
         });*/
 	}
-	$('#nestable2').nestable({
+	$('#nestable1').nestable({
         group: 1,
         maxDepth: 2
     }).on('change', updateMenu);

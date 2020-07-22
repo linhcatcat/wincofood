@@ -19,6 +19,12 @@ class MenuFooterRepository extends ServiceEntityRepository
         parent::__construct($registry, MenuFooter::class);
     }
 
+    public function getAllMenu() { 
+        $qb = $this->createQueryBuilder('m')
+            ->orderBy('m.sort', 'ASC');
+        return $qb->getQuery()->getResult(); 
+    }
+
     public function getSubMenu($id) { 
         $qb = $this->createQueryBuilder('m')
             ->andWhere('m.parent = :parent')
