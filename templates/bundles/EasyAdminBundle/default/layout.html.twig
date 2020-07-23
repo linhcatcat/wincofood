@@ -216,7 +216,7 @@
                 <script src="{{ asset(js_asset) }}"></script>
             {% endfor %}
 
-            {% if app.request.get('entity') == 'Menu' %}
+            {#% if app.request.get('entity') == 'Menu' %}
                 {% if app.request.get('action') == 'list' %}
                 <script src="{{ asset('js/jquery.nestable.js') }}"></script>
                 <script src="{{ asset('js/admin.js') }}"></script>
@@ -228,7 +228,7 @@
                 <script src="{{ asset('js/jquery.nestable.js') }}"></script>
                 <script src="{{ asset('js/admin-footer.js') }}"></script>
                 {% endif %}
-            {% endif %}
+            {% endif %#}
         {% endblock body_custom_javascript %}
 
     </body>

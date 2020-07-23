@@ -40,11 +40,8 @@ easy_admin:
         fields:
           - { property: 'title', type: 'text'}
           - { property: 'imageFile', type: 'vich_image' }
-          - { 
-              property: 'summary', 
-              type: 'fos_ckeditor', 
-              type_options: { 'config': { 'toolbar': 'full', 'uiColor': '#e2e2e2' } }
-            }
+          - { property: 'summary', type: 'fos_ckeditor' }
+          - { property: 'description', type: 'fos_ckeditor' }
       list:
         fields:
           - { property: 'image', template: 'vich_uploader_image.html.twig' }
