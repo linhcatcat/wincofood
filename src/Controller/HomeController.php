@@ -1,7 +1,7 @@
 <?php
 	namespace App\Controller;
 
-	//use App\Entity\Intro;
+	use App\Entity\Intro;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Routing\Annotation\Route;
@@ -23,8 +23,16 @@
 		*/
 	    public function intro(): Response
 	    {
-	        //$intro = $this->getDoctrine()->getRepository(Intro::class)->findAll();
+		    $em = $this->getDoctrine()->getManager();
+			$qb = $em->createQueryBuilder();
 
-	        return $this->render('home/intro.html.twig');
+ 			$intro = $qb->select('i')
+				->from(Intro::class,'i')
+				->setFirstResult(0)
+   				->setMaxResults(1)
+				->getQuery()
+				->getOneOrNullResult();
+
+	        return $this->render('home/intro.html.twig', ['intro' => $intro]);
 	    }
 	}
