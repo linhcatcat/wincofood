@@ -54,7 +54,7 @@
 		}
 
 		/**
-		* @Route("/", name="article_list")
+		* @Route("/article", name="article_list")
 		* @Method({"GET"})
 		*/
 	    public function index(): Response

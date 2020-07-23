@@ -34,11 +34,21 @@ easy_admin:
               type: 'fos_ckeditor', 
               type_options: { 'config': { 'toolbar': 'full', 'uiColor': '#e2e2e2' } }
             }
+    Intro:
+      class: App\Entity\Intro
+      form:
+        fields:
+          - { property: 'title', type: 'text'}
+          - { property: 'imageFile', type: 'vich_image' }
+          - { 
+              property: 'summary', 
+              type: 'fos_ckeditor', 
+              type_options: { 'config': { 'toolbar': 'full', 'uiColor': '#e2e2e2' } }
+            }
       list:
         fields:
           - { property: 'image', template: 'vich_uploader_image.html.twig' }
           - { property: 'title', type: 'text'}
-          - { property: 'category', type_options: { 'by_reference': false } }
     Category:
       class: App\Entity\Category
       form:

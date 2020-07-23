@@ -1,15 +1,52 @@
 @media (min-width: 1561px) {
 	.container, .container-sm, .container-md, .container-lg, .container-xl {
-	    max-width: 1560px;
+		max-width: 1560px;
 	}
 }
 
 .carousel-indicators li{
-	background-color: #4CAF50;
+	background-color: #1565C0;
 }
 
 .wrap-container {
 	margin-top: 56px;
+}
+
+.home_page .wrap-container {
+	margin-top: 0;
+}
+
+.winco-food {
+	margin-bottom: 30px;
+}
+
+.winco-food .title h2 {
+	margin-bottom: 10px;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px transparent;
+	position: relative;
+	overflow: hidden;
+	color: #2780E3;
+	font-weight: 700;
+	display: inline-block;
+}
+
+.winco-food .title h2:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #2780E3;
+	height: 2px;
+}
+
+.winco-food .image img {
+	max-width: 100%;
+	height: auto;
 }
 
 footer.wrap-container {
