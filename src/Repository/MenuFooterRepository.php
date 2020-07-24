@@ -22,7 +22,7 @@ class MenuFooterRepository extends ServiceEntityRepository
     public function getAllMenu() { 
         $qb = $this->createQueryBuilder('m')
             ->orderBy('m.sort', 'ASC');
-        return $qb->getQuery()->getResult(); 
+        return $qb->getQuery()->getResult();
     }
 
     public function getSubMenu($id) { 
@@ -30,7 +30,7 @@ class MenuFooterRepository extends ServiceEntityRepository
             ->andWhere('m.parent = :parent')
             ->setParameter('parent', $id)
             ->orderBy('m.sort', 'ASC');
-        return $qb->getQuery()->getResult(); 
+        return $qb->getQuery()->getResult();
     }
 
     // /**

@@ -2,6 +2,9 @@
 	namespace App\Controller;
 
 	use App\Entity\Intro;
+	use App\Entity\ProductBlock;
+	use App\Entity\Category;
+	use App\Entity\Product;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +22,58 @@
 	class HomeController extends AbstractController {
 		/**
 		* @Route("/", name="home_page")
+		* @Method({"GET"})
+		*/
+	    public function home(): Response
+	    {
+		    $em = $this->getDoctrine()->getManager();
+			$qb = $em->createQueryBuilder();
+
+ 			$intro = $qb->select('i')
+				->from(Intro::class,'i')
+				->setFirstResult(0)
+   				->setMaxResults(1)
+				->getQuery()
+				->getOneOrNullResult();
+
+			$product = $qb->select('pb')
+				->from(ProductBlock::class,'pb')
+				->setFirstResult(0)
+   				->setMaxResults(1)
+				->getQuery()
+				->getOneOrNullResult();
+
+			$categories = $qb->select('c')
+				->from(Category::class,'c')
+				->setFirstResult(0)
+   				->setMaxResults(3)
+				->getQuery()
+				->getResult();
+
+	        return $this->render('home/home.html.twig', [
+	        	'intro' => $intro, 
+	        	'product' => $product,
+	        	'categories' => $categories
+	        ]);
+	    }
+
+	    public function productByCategory(Request $req) {
+			$categoryId = $req->get('categoryId');
+			$em = $this->getDoctrine()->getManager();
+			$qb = $em->createQueryBuilder();
+			$products = $qb->select('p')
+				->from(Product::class,'p')
+				->andWhere('p.category = :category')
+            	->setParameter('category', $categoryId)
+				->setFirstResult(0)
+   				->setMaxResults(3)
+				->getQuery()
+				->getResult();
+			return $this->render('home/product.html.twig', ['products' => $products]);
+		}
+
+	    /**
+		* @Route("/gioi-thieu", name="intro_page")
 		* @Method({"GET"})
 		*/
 	    public function intro(): Response

@@ -7,6 +7,7 @@
 		<link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
 		<link href="{{ asset('css/animations.css') }}" rel="stylesheet"/>
 		<link href="{{ asset('css/hover.css') }}" rel="stylesheet"/>
+		<link href="{{ asset('css/tab.css') }}" rel="stylesheet"/>
 		<link href="{{ asset('css/menu.css') }}" rel="stylesheet"/>
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
 		{% block stylesheets %}{% endblock %}
@@ -18,12 +19,9 @@
 		{#{ include('inc/slide.html.twig') }#}
 		{{ render(controller('App\\Controller\\SlideController::slide')) }}
 		{% endif %}
-		<div class="wrap-container">
-			
-			<div class="container">
-				{% block body %}{% endblock %}
-			</div>
-		</div>
+		
+		{% block body %}{% endblock %}
+		
 		{{ render(controller('App\\Controller\\MenuFooterController::menuFooter')) }}
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

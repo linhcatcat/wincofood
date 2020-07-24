@@ -10,10 +10,16 @@
 
 .wrap-container {
 	margin-top: 56px;
+	padding-bottom: 10px;
 }
 
 .home_page .wrap-container {
 	margin-top: 20px;
+}
+
+.home_page .intro {
+	background-image: url('../images/bg-block.png');
+	background-size: 100% 100%;
 }
 
 .winco-food {
@@ -46,11 +52,48 @@
 
 .winco-food .image img {
 	max-width: 100%;
+	width: 100%;
 	height: auto;
+}
+
+.winco-food .go-detail:after {
+	content: "";
+	position: absolute;
+	width: 36%;
+	height: 2px;
+	background: #2780E3;
+	bottom: 0;
+	left: 15px;
+}
+
+.winco-food .go-detail:before {
+	content: "";
+	position: absolute;
+	width: 36%;
+	height: 2px;
+	background: #2780E3;
+	bottom: 0;
+	right: 15px;
+}
+
+.winco-food .go-detail a {
+	font-size: 18px;
+	display: block;
+	color: #2780E3;
+	padding-top: 5px;
+	text-align: center;
+	width: 165px;
+	margin: auto;
+	font-weight: 700;
+}
+
+.product .summary .tab-item {
+	margin-bottom: 15px;
 }
 
 footer.wrap-container {
 	margin-top: 0;
+	margin-bottom: 0 !important;
 }
 
 .carousel-item {
@@ -81,9 +124,7 @@ footer.wrap-container {
 	bottom: 0;
 }
 
-iframe.kenh-winco-food {
-	width: 350;
-	height: auto;
+.intro .summary {
 }
 
 footer {

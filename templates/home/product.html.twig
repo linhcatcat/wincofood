@@ -1,0 +1,10 @@
+{% for p in products %}
+<div class="row tab-item">
+	<div class="col-md-4">
+		<p>{{p.title}}</p>
+	</div>
+	<div class="col-md-8">
+		{{p.summary|raw}}
+	</div>
+</div>
+{% endfor %}

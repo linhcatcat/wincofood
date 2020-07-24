@@ -32,6 +32,11 @@ class Product
     /**
      * @ORM\Column(type="text")
      */
+    private $summary;
+
+    /**
+     * @ORM\Column(type="text")
+     */
     private $content;
 
     /**
@@ -78,6 +83,14 @@ class Product
 
     public function setTitle($title) {
         $this->title = $title;
+    }
+
+    public function getSummary() {
+        return $this->summary;
+    }
+
+    public function setSummary($summary) {
+        $this->summary = $summary;
     }
 
     public function getContent() {

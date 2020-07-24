@@ -1,5 +1,5 @@
 easy_admin:
-  site_name: 'Good M'
+  site_name: 'WincoFood'
   design:
     #rtl: false
     assets:
@@ -29,11 +29,17 @@ easy_admin:
           - { property: 'title', type: 'text'}
           - { property: 'category', type_options: { 'by_reference': true } }
           - { property: 'imageFile', type: 'vich_image' }
+          - { property: 'summary', type: 'fos_ckeditor' }
           - { 
               property: 'content', 
               type: 'fos_ckeditor', 
               type_options: { 'config': { 'toolbar': 'full', 'uiColor': '#e2e2e2' } }
             }
+      list:
+        fields:
+          - { property: 'image', template: 'vich_uploader_image.html.twig' }
+          - { property: 'title', type: 'text'}
+          - { property: 'category', type_options: { 'by_reference': false } }
     Intro:
       class: App\Entity\Intro
       form:
@@ -42,6 +48,16 @@ easy_admin:
           - { property: 'imageFile', type: 'vich_image' }
           - { property: 'summary', type: 'fos_ckeditor' }
           - { property: 'description', type: 'fos_ckeditor' }
+      list:
+        fields:
+          - { property: 'image', template: 'vich_uploader_image.html.twig' }
+          - { property: 'title', type: 'text'}
+    ProductBlock:
+      class: App\Entity\ProductBlock
+      form:
+        fields:
+          - { property: 'title', type: 'text'}
+          - { property: 'imageFile', type: 'vich_image' }
       list:
         fields:
           - { property: 'image', template: 'vich_uploader_image.html.twig' }
