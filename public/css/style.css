@@ -16,13 +16,23 @@
 .wrap-container {
 	margin-top: 56px;
 	padding-bottom: 10px;
+	padding-top: 30px;
+}
+
+.product .winco-food {
+	margin-bottom: 0;
+}
+
+.product .tab-item .summary {
+	text-align: justify;
+	padding-right: 30px;
 }
 
 .home_page .wrap-container {
 	padding-top: 20px;
 }
 
-.home_page .wrap-container.intro {
+.home_page .wrap-container {
 	margin-top: 0;
 }
 
