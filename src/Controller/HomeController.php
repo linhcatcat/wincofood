@@ -5,6 +5,7 @@
 	use App\Entity\ProductBlock;
 	use App\Entity\Category;
 	use App\Entity\Product;
+	use App\Entity\Distribution;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Routing\Annotation\Route;
@@ -50,10 +51,18 @@
 				->getQuery()
 				->getResult();
 
+			$distribution = $qb->select('d')
+				->from(Distribution::class,'d')
+				->setFirstResult(0)
+   				->setMaxResults(1)
+				->getQuery()
+				->getOneOrNullResult();
+
 	        return $this->render('home/home.html.twig', [
 	        	'intro' => $intro, 
 	        	'product' => $product,
-	        	'categories' => $categories
+	        	'categories' => $categories,
+	        	'distribution' => $distribution
 	        ]);
 	    }
 
@@ -83,6 +92,25 @@
 
  			$intro = $qb->select('i')
 				->from(Intro::class,'i')
+				->setFirstResult(0)
+   				->setMaxResults(1)
+				->getQuery()
+				->getOneOrNullResult();
+
+	        return $this->render('home/intro.html.twig', ['intro' => $intro]);
+	    }
+
+	    /**
+		* @Route("/he-thong-phan-phoi", name="distribution_page")
+		* @Method({"GET"})
+		*/
+	    public function distribution(): Response
+	    {
+		    $em = $this->getDoctrine()->getManager();
+			$qb = $em->createQueryBuilder();
+
+ 			$intro = $qb->select('i')
+				->from(Distribution::class,'i')
 				->setFirstResult(0)
    				->setMaxResults(1)
 				->getQuery()

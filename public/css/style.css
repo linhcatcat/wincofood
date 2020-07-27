@@ -4,6 +4,11 @@
 	}
 }
 
+.register .wrap-container .container,
+.app_login .wrap-container .container {
+	max-width: 560px;
+}
+
 .carousel-indicators li{
 	background-color: #1565C0;
 }
@@ -17,6 +22,7 @@
 	margin-top: 20px;
 }
 
+.home_page .distribution,
 .home_page .intro {
 	background-image: url('../images/bg-block.png');
 	background-size: 100% 100%;
@@ -56,6 +62,10 @@
 	height: auto;
 }
 
+.winco-food .go-detail {
+	position: relative;
+}
+
 .winco-food .go-detail:after {
 	content: "";
 	position: absolute;
@@ -63,7 +73,7 @@
 	height: 2px;
 	background: #2780E3;
 	bottom: 0;
-	left: 15px;
+	left: 0;
 }
 
 .winco-food .go-detail:before {
@@ -73,7 +83,7 @@
 	height: 2px;
 	background: #2780E3;
 	bottom: 0;
-	right: 15px;
+	right: 0;
 }
 
 .winco-food .go-detail a {
@@ -89,6 +99,13 @@
 
 .product .summary .tab-item {
 	margin-bottom: 15px;
+}
+
+.product .summary .tab-item img {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	max-height: 240px;
 }
 
 footer.wrap-container {

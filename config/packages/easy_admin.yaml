@@ -52,6 +52,18 @@ easy_admin:
         fields:
           - { property: 'image', template: 'vich_uploader_image.html.twig' }
           - { property: 'title', type: 'text'}
+    Distribution:
+      class: App\Entity\Distribution
+      form:
+        fields:
+          - { property: 'title', type: 'text'}
+          - { property: 'imageFile', type: 'vich_image' }
+          - { property: 'summary', type: 'fos_ckeditor' }
+          - { property: 'description', type: 'fos_ckeditor' }
+      list:
+        fields:
+          - { property: 'image', template: 'vich_uploader_image.html.twig' }
+          - { property: 'title', type: 'text'}
     ProductBlock:
       class: App\Entity\ProductBlock
       form:

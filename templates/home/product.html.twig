@@ -1,7 +1,7 @@
 {% for p in products %}
 <div class="row tab-item">
 	<div class="col-md-4">
-		<p>{{p.title}}</p>
+		<img src="{{ vich_uploader_asset(p, 'imageFile') }}">
 	</div>
 	<div class="col-md-8">
 		{{p.summary|raw}}

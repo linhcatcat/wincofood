@@ -65,4 +65,26 @@
 			</div>
 		</div>
 	</div>
+	{% if distribution %}
+	<div class="wrap-container distribution">
+		<div class="container">
+			<div class="winco-food ">
+				<div class="title">
+					<h2>{{distribution.title}}</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-4 image">
+						<img src="{{ vich_uploader_asset(distribution, 'imageFile') }}">
+					</div>
+					<div class="col-md-8 summary">
+						{{distribution.summary|raw}}
+						<div class="go-detail">
+							<a href="/he-thong-phan-phoi">Xem chi tiết</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
 {% endblock %}
