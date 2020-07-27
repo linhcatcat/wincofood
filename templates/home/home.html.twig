@@ -6,18 +6,22 @@
 	{% if intro %}
 	<div class="wrap-container intro">
 		<div class="container">
-			<div class="winco-food ">
-				<div class="title">
-					<h2>{{intro.title}}</h2>
-				</div>
-				<div class="row">
-					<div class="col-md-4 image">
-						<img src="{{ vich_uploader_asset(intro, 'imageFile') }}">
+			<div class="winco-food">
+				<div class="winco-food-inner">
+					<div class="title">
+						<h2>{{intro.title}}</h2>
 					</div>
-					<div class="col-md-8 summary">
-						{{intro.summary|raw}}
-						<div class="go-detail">
-							<a href="/gioi-thieu">Xem chi tiết</a>
+					<div class="ct">
+						<div class="row">
+							<div class="col-md-4 image">
+								<img src="{{ vich_uploader_asset(intro, 'imageFile') }}">
+							</div>
+							<div class="col-md-8 summary">
+								{{intro.summary|raw}}
+								<div class="go-detail">
+									<a href="/gioi-thieu">Xem chi tiết</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -27,12 +31,12 @@
 	{% endif %}
 	<div class="wrap-container product">
 		<div class="container">
-			<div class="winco-food ">
-				<div class="title">
-					<h2>{{product.title}}</h2>
-				</div>
+			<div class="winco-food">
 				<div class="row">
 					<div class="col-md-4 image">
+						<div class="title">
+							<h2>{{product.title}}</h2>
+						</div>
 						<img src="{{ vich_uploader_asset(product, 'imageFile') }}">
 					</div>
 					<div class="col-md-8 summary">
@@ -69,17 +73,21 @@
 	<div class="wrap-container distribution">
 		<div class="container">
 			<div class="winco-food ">
-				<div class="title">
-					<h2>{{distribution.title}}</h2>
-				</div>
-				<div class="row">
-					<div class="col-md-4 image">
-						<img src="{{ vich_uploader_asset(distribution, 'imageFile') }}">
+				<div class="winco-food-inner">
+					<div class="title">
+						<h2>{{distribution.title}}</h2>
 					</div>
-					<div class="col-md-8 summary">
-						{{distribution.summary|raw}}
-						<div class="go-detail">
-							<a href="/he-thong-phan-phoi">Xem chi tiết</a>
+					<div class="ct">
+						<div class="row">
+							<div class="col-md-4 image">
+								<img src="{{ vich_uploader_asset(distribution, 'imageFile') }}">
+							</div>
+							<div class="col-md-8 summary">
+								{{distribution.summary|raw}}
+								<div class="go-detail">
+									<a href="/he-thong-phan-phoi">Xem chi tiết</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

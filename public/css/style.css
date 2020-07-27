@@ -19,7 +19,15 @@
 }
 
 .home_page .wrap-container {
-	margin-top: 20px;
+	padding-top: 20px;
+}
+
+.home_page .wrap-container.intro {
+	margin-top: 0;
+}
+
+.home_page .wrap-container.product {
+	margin-top: 0;
 }
 
 .home_page .distribution,
@@ -141,11 +149,20 @@ footer.wrap-container {
 	bottom: 0;
 }
 
-.intro .summary {
+.distribution .winco-food-inner .ct,
+.intro .winco-food-inner .ct {
+	background-color: #fff;
+}
+
+.distribution .winco-food-inner .ct .summary,
+.intro .winco-food-inner .ct .summary {
+	padding-top: 20px;
+	padding-right: 30px;
 }
 
 footer {
 	font-weight: 700;
+	padding-top: 30px;
 }
 
 .footer-top .winco-title h4 {
