@@ -1,5 +1,7 @@
 easy_admin:
   site_name: 'WincoFood'
+  formats:
+    datetime: 'd-m-Y h:i'
   design:
     #rtl: false
     assets:
@@ -40,6 +42,20 @@ easy_admin:
           - { property: 'image', template: 'vich_uploader_image.html.twig' }
           - { property: 'title', type: 'text'}
           - { property: 'category', type_options: { 'by_reference': false } }
+    Recruitment:
+      class: App\Entity\Recruitment
+      form:
+        fields:
+          - { property: 'title', type: 'text'}
+          - { property: 'imageFile', type: 'vich_image' }
+          - { property: 'summary', type: 'fos_ckeditor' }
+          - { property: 'description', type: 'fos_ckeditor' }
+      list:
+        fields:
+          - { property: 'image', template: 'vich_uploader_image.html.twig' }
+          - { property: 'title', type: 'text'}
+          - { property: 'createdAt', type: 'datetime'}
+          - { property: 'updatedAt', type: 'datetime'}
     Intro:
       class: App\Entity\Intro
       form:
