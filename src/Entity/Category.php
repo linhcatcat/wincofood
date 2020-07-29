@@ -3,10 +3,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\String\Slugger\AsciiSlugger;
+use function Symfony\Component\String\u;
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
+ * @ORM\HasLifecycleCallbacks()
  */
 class Category
 {
@@ -33,6 +35,11 @@ class Category
     private $name;
 
     /**
+     * @ORM\Column(type="text", length=250, nullable=true)
+     */
+    private $slug;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $description;
@@ -46,9 +53,20 @@ class Category
     /**
      * @ORM\PrePersist
      */
-    public function onPrePersist()
+    public function setCreatedAtValue()
     {
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new \DateTime('now');
+        $slugger = new AsciiSlugger();
+        $this->setSlug($slugger->slug(u($this->getName())->lower()));
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $slugger = new AsciiSlugger();
+        $this->setSlug($slugger->slug(u($this->getName())->lower()));
     }
 
     public function __toString() {
@@ -73,6 +91,14 @@ class Category
 
     public function setName($name) {
         $this->name = $name;
+    }
+
+    public function getSlug() {
+        return $this->slug;
+    }
+
+    public function setSlug($slug) {
+        $this->slug = $slug;
     }
 
     public function getDescription() {

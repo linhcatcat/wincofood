@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
@@ -20,6 +21,7 @@ class ProductController extends AbstractController
             'products' => $products,
         ]);
     }
+
     /**
      * @Route("/san-pham/{page}", name="product_list", defaults={"page"=1})
      */
@@ -34,6 +36,34 @@ class ProductController extends AbstractController
         );
         return $this->render('product/list.html.twig', [
             'products' => $pagination,
+        ]);
+    }
+
+
+    
+    /**
+     * @Route("/san-pham/danh-muc/{id}/{title}/{page}", name="product_cate", defaults={"page"=1})
+     */
+    public function cate(PaginatorInterface $paginator, $id, $title, $page)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $products = $qb->select('p')
+            ->from(Product::class,'p')
+            ->andWhere('p.category = :category')
+            ->setParameter('category', $id)
+            ->getQuery()
+            ->getResult();
+
+        $pagination = $paginator->paginate(
+            $products,
+            $page,
+            3
+        );
+
+        $category = $this->getDoctrine()->getRepository(Category::class)->find($id);
+        return $this->render('product/cate.html.twig', [
+            'products' => $pagination, 'category' => $category
         ]);
     }
 
