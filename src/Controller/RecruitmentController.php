@@ -39,4 +39,20 @@ class RecruitmentController extends AbstractController
         }
         return $this->render('recruitment/detail.html.twig', array('recruitment' => $recruitment));
     }
+
+    public function relate(Request $req) {
+        $recruitmentId = $req->get('recruitmentId');
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $recruitments = $qb->select('r')
+            ->from(Recruitment::class,'r')
+            ->andWhere('r.id != :id')
+            ->setParameter('id', $recruitmentId)
+            ->orderBy('r.createdAt', 'DESC')
+            ->setFirstResult(0)
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+        return $this->render('recruitment/relate.html.twig', ['recruitments' => $recruitments]);
+    }
 }

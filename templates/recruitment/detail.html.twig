@@ -16,6 +16,7 @@
 					</div>
 				</div>
 			</div>
+			{{ render(controller('App\\Controller\\RecruitmentController::relate', {recruitmentId: recruitment.id})) }}
 		</div>
 	</div>
 	{% endif %}

@@ -51,20 +51,20 @@ class ProductController extends AbstractController
     }
 
     public function productByCategory(Request $req) {
-            $categoryId = $req->get('categoryId');
-            $productId = $req->get('productId');
-            $em = $this->getDoctrine()->getManager();
-            $qb = $em->createQueryBuilder();
-            $products = $qb->select('p')
-                ->from(Product::class,'p')
-                ->andWhere('p.category = :category')
-                ->setParameter('category', $categoryId)
-                ->andWhere('p.id != :id')
-                ->setParameter('id', $productId)
-                ->setFirstResult(0)
-                ->setMaxResults(3)
-                ->getQuery()
-                ->getResult();
-            return $this->render('product/product-category.html.twig', ['products' => $products]);
-        }
+        $categoryId = $req->get('categoryId');
+        $productId = $req->get('productId');
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $products = $qb->select('p')
+            ->from(Product::class,'p')
+            ->andWhere('p.category = :category')
+            ->setParameter('category', $categoryId)
+            ->andWhere('p.id != :id')
+            ->setParameter('id', $productId)
+            ->setFirstResult(0)
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+        return $this->render('product/product-category.html.twig', ['products' => $products]);
+    }
 }
