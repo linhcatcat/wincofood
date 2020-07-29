@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/san-pham", name="product")
+     * @Route("/san-pham1", name="product")
      */
     public function index()
     {
@@ -18,17 +20,51 @@ class ProductController extends AbstractController
             'products' => $products,
         ]);
     }
+    /**
+     * @Route("/san-pham/{page}", name="product_list", defaults={"page"=1})
+     */
+    public function list(PaginatorInterface $paginator, $page)
+    {
+        $products = $this->getDoctrine()->getRepository(Product::class)->findAll();
+
+        $pagination = $paginator->paginate(
+            $products,
+            $page,
+            5
+        );
+        return $this->render('product/list.html.twig', [
+            'products' => $pagination,
+        ]);
+    }
 
     /**
-     * @Route("/san-pham/{id}", name="product_show")
+     * @Route("/san-pham/chi-tiet/{id}/{title}", name="product_detail")
      */
-    public function show($id) {
+    public function detail($id) {
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
         if (!$product) {
             //return $this->redirectToRoute('_preview_error', ['code'=>404]);
             //throw $this->createNotFoundException('Sản phẩm không tồn tại');
             throw new NotFoundHttpException('Sorry not existing!');
         }
-        return $this->render('product/show.html.twig', array('product' => $product));
+        return $this->render('product/detail.html.twig', array('product' => $product));
     }
+
+    public function productByCategory(Request $req) {
+            $categoryId = $req->get('categoryId');
+            $productId = $req->get('productId');
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $products = $qb->select('p')
+                ->from(Product::class,'p')
+                ->andWhere('p.category = :category')
+                ->setParameter('category', $categoryId)
+                ->andWhere('p.id != :id')
+                ->setParameter('id', $productId)
+                ->setFirstResult(0)
+                ->setMaxResults(3)
+                ->getQuery()
+                ->getResult();
+            return $this->render('product/product-category.html.twig', ['products' => $products]);
+        }
 }

@@ -4,10 +4,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 
 /**
  * @ORM\Entity
  * @Vich\Uploadable
+ * @ORM\HasLifecycleCallbacks()
  */
 class Product
 {
@@ -28,6 +30,11 @@ class Product
      * @ORM\Column(type="text", length=250)
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="text", length=250, nullable=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="text")
@@ -57,6 +64,26 @@ class Product
      */
     private $updatedAt;
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->updatedAt = new \DateTime('now');
+        $slugger = new AsciiSlugger();
+        $this->setSlug($slugger->slug(strtolower($this->getTitle())));
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->updatedAt = new \DateTime('now');
+        $slugger = new AsciiSlugger();
+        $this->setSlug($slugger->slug(strtolower($this->getTitle())));
+    }
+
     public function __toString() {
         return $this->title;
     }
@@ -83,6 +110,14 @@ class Product
 
     public function setTitle($title) {
         $this->title = $title;
+    }
+
+    public function getSlug() {
+        return $this->slug;
+    }
+
+    public function setSlug($slug) {
+        $this->slug = $slug;
     }
 
     public function getSummary() {

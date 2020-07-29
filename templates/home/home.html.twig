@@ -56,10 +56,12 @@
 								{% if loop.index == 1 %}
 									<div class="tab-pane fade show active" id="nav-home-{{c.id}}" role="tabpanel" aria-labelledby="nav-home-tab-{{c.id}}">
 										{{ render(controller('App\\Controller\\HomeController::productByCategory', {categoryId: c.id})) }}
+										<div class="go-detail"><a href="/">Xem thêm</a></div>
 									</div>
 								{% else %}
 									<div class="tab-pane fade" id="nav-home-{{c.id}}" role="tabpanel" aria-labelledby="nav-home-tab-{{c.id}}">
 										{{ render(controller('App\\Controller\\HomeController::productByCategory', {categoryId: c.id})) }}
+										<div class="go-detail"><a href="/">Xem thêm</a></div>
 									</div>
 								{% endif %}
 							{% endfor %}
