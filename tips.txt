@@ -35,7 +35,7 @@ php bin/console cache:clear
 
 
 
-php bin/console elfinder:install
+php bin/console elfinder:install // upload image
 
 
 
