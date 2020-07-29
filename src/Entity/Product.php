@@ -5,6 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\String\Slugger\AsciiSlugger;
+use function Symfony\Component\String\u;
 
 /**
  * @ORM\Entity
@@ -71,7 +72,7 @@ class Product
     {
         $this->updatedAt = new \DateTime('now');
         $slugger = new AsciiSlugger();
-        $this->setSlug($slugger->slug(strtolower($this->getTitle())));
+        $this->setSlug($slugger->slug(u($this->getTitle())->lower()));
     }
 
     /**
@@ -81,7 +82,7 @@ class Product
     {
         $this->updatedAt = new \DateTime('now');
         $slugger = new AsciiSlugger();
-        $this->setSlug($slugger->slug(strtolower($this->getTitle())));
+        $this->setSlug($slugger->slug(u($this->getTitle())->lower()));
     }
 
     public function __toString() {

@@ -6,6 +6,8 @@ use App\Repository\RecruitmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\String\Slugger\AsciiSlugger;
+use function Symfony\Component\String\u;
 
 /**
  * @ORM\Entity(repositoryClass=RecruitmentRepository::class)
@@ -25,6 +27,11 @@ class Recruitment
      * @ORM\Column(type="string", length=150)
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="text")
@@ -67,6 +74,8 @@ class Recruitment
     {
         $this->createdAt = new \DateTime('now');
         $this->updatedAt = new \DateTime('now');
+        $slugger = new AsciiSlugger();
+        $this->setSlug($slugger->slug(u($this->getTitle())->lower()));
     }
 
     /**
@@ -75,6 +84,8 @@ class Recruitment
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTime('now');
+        $slugger = new AsciiSlugger();
+        $this->setSlug($slugger->slug(u($this->getTitle())->lower()));
     }
 
     public function getId(): ?int
@@ -92,6 +103,14 @@ class Recruitment
         $this->title = $title;
 
         return $this;
+    }
+
+    public function getSlug() {
+        return $this->slug;
+    }
+
+    public function setSlug($slug) {
+        $this->slug = $slug;
     }
 
     public function getSummary(): ?string
