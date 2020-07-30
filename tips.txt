@@ -39,6 +39,7 @@ php bin/console elfinder:install // upload image
 
 https://symfony.com/doc/1.x/bundles/EasyAdminBundle/book/actions-configuration.html //config action admin
 
+https://topthuthuat.com/cach-cai-dat-xampp-tren-ubuntu/
 
 
 access_control:
