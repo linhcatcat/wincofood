@@ -12,7 +12,7 @@ easy_admin:
       - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
       - '@VichUploader/Form/fields.html.twig'
   list:
-    max_results: 20
+    max_results: 10
   entities:
     # Article:
     #   class: App\Entity\Article
@@ -140,3 +140,31 @@ easy_admin:
           - { property: 'image', template: 'vich_uploader_image.html.twig' }
           - { property: 'title', type: 'text'}
           - { property: 'link', type: 'text'}
+    Contact:
+      class: App\Entity\Contact
+      disabled_actions: ['new']
+      list:
+        actions: ['show', '-edit']
+        fields:
+          - { property: 'name', type: 'text'}
+          - { property: 'email', type: 'text'}
+          - { property: 'subject', type: 'text'}
+          - { property: 'content', type: 'text'}
+          - { property: 'createdAt', type: 'datetime'}
+      show:
+        actions: ['-edit']
+    Notice:
+      class: App\Entity\Notice
+      form:
+        fields:
+          - { property: 'title', type: 'text'}
+          - { property: 'active'}
+          - { property: 'imageFile', type: 'vich_image' }
+          - { property: 'content', type: 'fos_ckeditor' }
+      list:
+        fields:
+          - { property: 'image', template: 'vich_uploader_image.html.twig' }
+          - { property: 'title', type: 'text'}
+          - { property: 'content', type: 'text'}
+          - { property: 'active', type: 'toggle'}
+          - { property: 'createdAt', type: 'datetime'}

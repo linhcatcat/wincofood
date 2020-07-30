@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liên hệ{% endblock %}
+
+{% block body %}
+	<div class="wrap-container">
+		<div class="container">
+			{% for flash_message in app.session.flashBag.get('success') %}
+			<div class="row">
+				<div class="col-md-8">
+					<div class="alert alert-success">
+						{{ flash_message }}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			<div class="winco-food intro">
+				<div class="title">
+					<h2>Liên hệ</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						{{ form_start(form) }}
+						{{ form_widget(form) }}
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

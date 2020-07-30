@@ -3,6 +3,29 @@
 {% block title %}Trang chủ{% endblock %}
 
 {% block body %}
+	{% if notice %}
+	<div class="wrap-container notice">
+		<div class="container">
+			<div class="winco-food">
+				<div class="winco-food-inner">
+					<div class="title">
+						<h2>{{notice.title}}</h2>
+					</div>
+					<div class="ct">
+						<div class="row">
+							<div class="col-md-4 image">
+								<img src="{{ vich_uploader_asset(notice, 'imageFile') }}">
+							</div>
+							<div class="col-md-8 summary">
+								{{notice.content|raw}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
 	{% if intro %}
 	<div class="wrap-container intro">
 		<div class="container">
