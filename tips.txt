@@ -41,6 +41,13 @@ https://symfony.com/doc/1.x/bundles/EasyAdminBundle/book/actions-configuration.h
 
 https://topthuthuat.com/cach-cai-dat-xampp-tren-ubuntu/
 
+sudo /etc/init.d/apache2 stop
+sudo /opt/lampp/lampp start
+
+sudo /opt/lampp/lampp stop
+sudo /etc/init.d/apache2 start
+
+
 
 access_control:
     - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -58,3 +65,27 @@ https://github.com/helios-ag/FMElfinderBundle
 
 
 https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/tutorials/composite-primary-keys.html#composite-and-foreign-keys-as-primary-key
+
+Add to file:
+	/opt/lampp/etc/extra/https-vhosts.conf
+
+	<VirtualHost *:80>
+	    DocumentRoot "/opt/lampp/htdocs/wincofood/public"
+	    ServerName wincofood.loc
+	    <Directory "/opt/lampp/htdocs/wincofood/public">
+	        AllowOverride All
+	        Require all granted
+	    </Directory>
+	</VirtualHost>
+----------------------------------------
+Add to file:
+	/etc/hosts
+
+	127.0.1.1	wincofood.loc
+----------------------------------------
+Anable in file:
+	/opt/lampp/etc/httpd.conf
+
+line 487 # Virtual hosts
+lien 488 Include etc/extra/httpd-vhosts.conf
+
